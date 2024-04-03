@@ -1,0 +1,32 @@
+.header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 10px;
+  background-color: #494d4e;
+
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.inputContainer {
+  display: flex;
+  gap: 10px;
+}
+
+.button {
+  padding: 3px;
+  border-radius: 3px;
+}
+
+input {
+  padding: 6px 20px;
+  border-width: 1px;
+  border-radius: 3px;
+}

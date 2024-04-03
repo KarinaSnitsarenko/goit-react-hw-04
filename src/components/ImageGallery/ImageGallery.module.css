@@ -1,0 +1,11 @@
+.galleryList {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 15px;
+  margin: 60px 0 0;
+  list-style: none;
+  padding: 0;
+}
