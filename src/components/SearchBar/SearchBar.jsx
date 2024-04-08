@@ -1,41 +1,47 @@
-import { useState } from "react";
-import { toast } from "react-hot-toast";
+import { Formik, Form, Field } from "formik";
+import toast from "react-hot-toast";
+import * as yup from "yup";
 import css from "./SearchBar.module.css";
 
-const SearchBar = ({ onSearch }) => {
-  const [query, setQuery] = useState("");
+const searchFormSchema = yup.object().shape({
+  searchTerm: yup.string().required("Required"),
+});
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    if (!query.trim()) {
-      toast.error("Please enter a search query!");
+const initialValues = {
+  searchTerm: "",
+};
+
+const SearchBar = ({ onSetSearchQuery }) => {
+  const handleSubmit = (values, { resetForm }) => {
+    if (!values.searchTerm.trim()) {
+      toast.error("Please enter a search term");
       return;
     }
-
-    onSearch(query);
-    setQuery("");
+    onSetSearchQuery(values.searchTerm.trim());
+    resetForm();
   };
 
   return (
-    <header className={css.header}>
-      <form onSubmit={handleSubmit} className={css.form}>
-        <div className={css.inputContainer}>
-          <input
-            className={css.input}
+    <Formik
+      initialValues={initialValues}
+      validationSchema={searchFormSchema}
+      onSubmit={handleSubmit}
+    >
+      <header className={css.header}>
+        <Form>
+          <Field
             type="text"
-            name="query"
+            name="searchTerm"
             autoComplete="off"
             autoFocus
             placeholder="Search images and photos"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
           />
-          <button className={css.button} type="submit">
+          <button className={css.button} type="submit" aria-label="Search">
             🔍
           </button>
-        </div>
-      </form>
-    </header>
+        </Form>
+      </header>
+    </Formik>
   );
 };
 

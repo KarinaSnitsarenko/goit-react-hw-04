@@ -1,14 +1,7 @@
-import css from "./ErrorMessage.module.css";
-
-const ErrorMessage = () => {
-  return (
-    <div className={css.errorWrapper}>
-      <p>
-        Oops, something went wrong. Give it another shot by refreshing the page,
-        please!
-      </p>
-    </div>
-  );
+const ErrorMessage = ({
+  message = "An error occurred while loading the file. Please try again later.",
+}) => {
+  return <p>{message}</p>;
 };
 
 export default ErrorMessage;

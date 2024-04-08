@@ -1,12 +1,12 @@
 import css from "./ImageCard.module.css";
 
 const ImageCard = ({ image, onOpen }) => (
-  <div className={css.contimg}>
+  <div>
     <img
       className={css.img}
       onClick={() =>
         onOpen({
-          isModalOpen: true,
+          isOpen: true,
           bigImage: image.urls.regular,
           imageDescription: image.alt_description,
         })

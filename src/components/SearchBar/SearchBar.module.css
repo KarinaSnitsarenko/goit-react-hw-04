@@ -6,13 +6,13 @@
   right: 0;
   padding: 10px;
   background-color: #494d4e;
-
 }
 
 form {
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 10px;
 }
 
 .inputContainer {
